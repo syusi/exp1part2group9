@@ -9,7 +9,11 @@
             var text;
             function initws(){
                 if (!ws) {
-                    ws = new WebSocket("ws://192.168.0.200:15044");
+                    hostname = window.location.href.split("/");
+
+                    var host = "ws://" + hostname[2];
+
+                    ws = new WebSocket(host);
                     ws.onopen = onOpen;
                     ws.onerror = onError;
                     ws.onmessage = onMessage;
